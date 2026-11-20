@@ -1,6 +1,17 @@
 [package]
 name = "payments-engine"
 version = "0.1.0"
-edition = "2024"
+edition = "2021"
+rust-version = "1.73"
 
 [dependencies]
+csv = "1.4.0"
+serde = { version = "1.0.229", features = ["derive"] }
+thiserror = "2.0.20"
+
+[dev-dependencies]
+proptest = "1.7.0"
+
+# `cargo run` uses this profile. Optimised for large inputs; overflow checks stay on.
+[profile.dev]
+opt-level = 3
