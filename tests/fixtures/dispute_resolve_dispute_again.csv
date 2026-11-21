@@ -1,0 +1,8 @@
+type,client,tx,amount
+deposit,9,40,60
+deposit,9,41,15
+dispute,9,40,
+dispute,9,40,
+resolve,9,40,
+resolve,9,40,
+dispute,9,40,

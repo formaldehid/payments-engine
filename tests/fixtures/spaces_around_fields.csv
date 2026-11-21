@@ -1,0 +1,6 @@
+type, client, tx, amount
+deposit, 5, 1001, 12.5
+ deposit ,5 ,1002 ,  7.25
+withdrawal ,  5,1003 , 2.75
+deposit, 6, 1004, 3
+dispute, 5, 1002

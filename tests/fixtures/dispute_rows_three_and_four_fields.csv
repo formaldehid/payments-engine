@@ -1,0 +1,9 @@
+type,client,tx,amount
+deposit,21,1,30
+deposit,22,2,45.5
+deposit,23,3,8.25
+dispute,21,1
+dispute,22,2,
+dispute,23,3,999.99
+resolve,22,2
+chargeback,23,3,not-a-number

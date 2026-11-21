@@ -1132,8 +1132,10 @@ mod tests {
 
     #[test]
     fn stored_deposit_entry_is_24_bytes() {
-        // What one stored deposit costs in the map, id included. Memory use on
-        // a large input is this figure times the number of deposits.
+        // What one slot of the map holds for a stored deposit, id included. A
+        // large input needs more than this for each deposit: the map keeps
+        // spare slots, and while it grows it holds its old table beside the
+        // new one.
         assert_eq!(std::mem::size_of::<(TxId, StoredDeposit)>(), 24);
     }
 
