@@ -6,7 +6,6 @@ rust-version = "1.73"
 
 [dependencies]
 csv = "1.4.0"
-serde = { version = "1.0.229", features = ["derive"] }
 thiserror = "2.0.20"
 
 [dev-dependencies]
