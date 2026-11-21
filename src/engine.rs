@@ -515,6 +515,7 @@ mod tests {
     use super::Outcome::{Applied, Ignored, Refused};
     use super::RefusalReason::{AccountLocked, AmountNotPositive, InsufficientFunds, RepeatedId};
     use super::*;
+    use crate::test_support::{amount, chargeback, deposit, dispute, resolve, withdrawal};
     use proptest::prelude::*;
 
     // Each test lists its transactions in order, with the outcome expected of
@@ -526,48 +527,6 @@ mod tests {
 
     /// What `rows` returns when no client has a record.
     const NO_ROWS: [&str; 0] = [];
-
-    /// Reads `text` as an amount.
-    fn amount(text: &str) -> Amount {
-        text.parse().expect("a test amount is well-formed")
-    }
-
-    fn deposit(client: u16, tx: u32, amount_text: &str) -> Transaction {
-        Transaction::Deposit {
-            client: ClientId(client),
-            tx: TxId(tx),
-            amount: amount(amount_text),
-        }
-    }
-
-    fn withdrawal(client: u16, tx: u32, amount_text: &str) -> Transaction {
-        Transaction::Withdrawal {
-            client: ClientId(client),
-            tx: TxId(tx),
-            amount: amount(amount_text),
-        }
-    }
-
-    fn dispute(client: u16, tx: u32) -> Transaction {
-        Transaction::Dispute {
-            client: ClientId(client),
-            tx: TxId(tx),
-        }
-    }
-
-    fn resolve(client: u16, tx: u32) -> Transaction {
-        Transaction::Resolve {
-            client: ClientId(client),
-            tx: TxId(tx),
-        }
-    }
-
-    fn chargeback(client: u16, tx: u32) -> Transaction {
-        Transaction::Chargeback {
-            client: ClientId(client),
-            tx: TxId(tx),
-        }
-    }
 
     /// Processes the transactions in order on a new engine and checks the
     /// outcome of each against the one written beside it. Returns the engine.

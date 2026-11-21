@@ -10,7 +10,8 @@
 // therefore denied outside tests: `unsafe` by the compiler on every build, the
 // rest by `cargo clippy`. `println!` and `eprintln!` are on the list because
 // they panic when the write fails, for instance into a closed pipe. `main.rs`
-// repeats the block because the binary is a separate crate.
+// and `examples/large_input.rs` repeat the block, because each is a crate of
+// its own.
 #![forbid(unsafe_code)]
 #![cfg_attr(
     not(test),
